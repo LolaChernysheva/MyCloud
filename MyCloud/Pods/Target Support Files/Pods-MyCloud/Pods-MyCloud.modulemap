@@ -1,0 +1,6 @@
+framework module Pods_MyCloud {
+  umbrella header "Pods-MyCloud-umbrella.h"
+
+  export *
+  module * { export * }
+}

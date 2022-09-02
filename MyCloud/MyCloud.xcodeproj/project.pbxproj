@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF15630D8038EC2758BADCF3 /* Pods_MyCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCAB66E964F66E23366A900 /* Pods_MyCloud.framework */; };
 		F360ACEB28C235790028E2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACEA28C235790028E2D5 /* AppDelegate.swift */; };
 		F360ACED28C235790028E2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACEC28C235790028E2D5 /* SceneDelegate.swift */; };
 		F360ACEF28C235790028E2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACEE28C235790028E2D5 /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		90F61BF8A0B84039BD562A78 /* Pods-MyCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCloud.release.xcconfig"; path = "Target Support Files/Pods-MyCloud/Pods-MyCloud.release.xcconfig"; sourceTree = "<group>"; };
+		93D9440F889039C4C50AA1C7 /* Pods-MyCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCloud.debug.xcconfig"; path = "Target Support Files/Pods-MyCloud/Pods-MyCloud.debug.xcconfig"; sourceTree = "<group>"; };
+		DBCAB66E964F66E23366A900 /* Pods_MyCloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F360ACE728C235790028E2D5 /* MyCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F360ACEA28C235790028E2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F360ACEC28C235790028E2D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF15630D8038EC2758BADCF3 /* Pods_MyCloud.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7E8B1C31705E029CC851424 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93D9440F889039C4C50AA1C7 /* Pods-MyCloud.debug.xcconfig */,
+				90F61BF8A0B84039BD562A78 /* Pods-MyCloud.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B28F9C02B115534D32E1D67A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DBCAB66E964F66E23366A900 /* Pods_MyCloud.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F360ACDE28C235790028E2D5 = {
 			isa = PBXGroup;
 			children = (
 				F360ACE928C235790028E2D5 /* MyCloud */,
 				F360ACE828C235790028E2D5 /* Products */,
+				A7E8B1C31705E029CC851424 /* Pods */,
+				B28F9C02B115534D32E1D67A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F360ACFB28C2357F0028E2D5 /* Build configuration list for PBXNativeTarget "MyCloud" */;
 			buildPhases = (
+				2C1F668742236212CB6CD181 /* [CP] Check Pods Manifest.lock */,
 				F360ACE328C235790028E2D5 /* Sources */,
 				F360ACE428C235790028E2D5 /* Frameworks */,
 				F360ACE528C235790028E2D5 /* Resources */,
+				BFE9C9134849125C8838FE2B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C1F668742236212CB6CD181 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyCloud-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFE9C9134849125C8838FE2B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCloud/Pods-MyCloud-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCloud/Pods-MyCloud-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCloud/Pods-MyCloud-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F360ACE328C235790028E2D5 /* Sources */ = {
@@ -276,6 +345,7 @@
 		};
 		F360ACFC28C2357F0028E2D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93D9440F889039C4C50AA1C7 /* Pods-MyCloud.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -303,6 +373,7 @@
 		};
 		F360ACFD28C2357F0028E2D5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90F61BF8A0B84039BD562A78 /* Pods-MyCloud.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
