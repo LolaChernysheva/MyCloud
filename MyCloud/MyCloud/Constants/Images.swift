@@ -17,4 +17,5 @@ final class Images {
     static let exit = UIImage(named: "Exit")
     static let menu = UIImage(named: "Menu")
     static let photo = UIImage(named: "Photo")
+    static let logo = UIImage(named: "Logo")
 }

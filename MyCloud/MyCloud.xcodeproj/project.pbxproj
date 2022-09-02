@@ -10,10 +10,22 @@
 		AF15630D8038EC2758BADCF3 /* Pods_MyCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCAB66E964F66E23366A900 /* Pods_MyCloud.framework */; };
 		F360ACEB28C235790028E2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACEA28C235790028E2D5 /* AppDelegate.swift */; };
 		F360ACED28C235790028E2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACEC28C235790028E2D5 /* SceneDelegate.swift */; };
-		F360ACEF28C235790028E2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACEE28C235790028E2D5 /* ViewController.swift */; };
 		F360ACF428C2357F0028E2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F360ACF328C2357F0028E2D5 /* Assets.xcassets */; };
 		F360ACF728C2357F0028E2D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F360ACF528C2357F0028E2D5 /* LaunchScreen.storyboard */; };
 		F360ACFF28C236C80028E2D5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACFE28C236C80028E2D5 /* SignInViewController.swift */; };
+		F360AD0328C238F00028E2D5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD0228C238F00028E2D5 /* SignUpViewController.swift */; };
+		F360AD0628C239820028E2D5 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD0528C239820028E2D5 /* Images.swift */; };
+		F360AD0828C239950028E2D5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD0728C239950028E2D5 /* Colors.swift */; };
+		F360AD0A28C239A50028E2D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD0928C239A50028E2D5 /* Constants.swift */; };
+		F360AD1028C23B3F0028E2D5 /* DocumentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD0F28C23B3F0028E2D5 /* DocumentsTableViewController.swift */; };
+		F360AD1228C23B810028E2D5 /* DocumentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD1128C23B810028E2D5 /* DocumentsTableViewCell.swift */; };
+		F360AD1428C23BAB0028E2D5 /* DocumentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD1328C23BAB0028E2D5 /* DocumentModels.swift */; };
+		F360AD1628C23C980028E2D5 /* DocumentsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD1528C23C980028E2D5 /* DocumentsCellViewModel.swift */; };
+		F360AD1928C23CC60028E2D5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD1828C23CC60028E2D5 /* Protocols.swift */; };
+		F360AD1C28C23CF00028E2D5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD1B28C23CF00028E2D5 /* UserModel.swift */; };
+		F360AD1F28C23D160028E2D5 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD1E28C23D160028E2D5 /* UserDefaultsManager.swift */; };
+		F360AD2128C23D390028E2D5 /* RealmDataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD2028C23D390028E2D5 /* RealmDataBaseService.swift */; };
+		F360AD2428C23D6E0028E2D5 /* AlertOk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD2328C23D6E0028E2D5 /* AlertOk.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +35,23 @@
 		F360ACE728C235790028E2D5 /* MyCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F360ACEA28C235790028E2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F360ACEC28C235790028E2D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F360ACEE28C235790028E2D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F360ACF328C2357F0028E2D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F360ACF628C2357F0028E2D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F360ACF828C2357F0028E2D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F360ACFE28C236C80028E2D5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		F360AD0228C238F00028E2D5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F360AD0528C239820028E2D5 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		F360AD0728C239950028E2D5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F360AD0928C239A50028E2D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F360AD0F28C23B3F0028E2D5 /* DocumentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsTableViewController.swift; sourceTree = "<group>"; };
+		F360AD1128C23B810028E2D5 /* DocumentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsTableViewCell.swift; sourceTree = "<group>"; };
+		F360AD1328C23BAB0028E2D5 /* DocumentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentModels.swift; sourceTree = "<group>"; };
+		F360AD1528C23C980028E2D5 /* DocumentsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCellViewModel.swift; sourceTree = "<group>"; };
+		F360AD1828C23CC60028E2D5 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		F360AD1B28C23CF00028E2D5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		F360AD1E28C23D160028E2D5 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		F360AD2028C23D390028E2D5 /* RealmDataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseService.swift; sourceTree = "<group>"; };
+		F360AD2328C23D6E0028E2D5 /* AlertOk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertOk.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +72,6 @@
 				93D9440F889039C4C50AA1C7 /* Pods-MyCloud.debug.xcconfig */,
 				90F61BF8A0B84039BD562A78 /* Pods-MyCloud.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,15 +104,115 @@
 		F360ACE928C235790028E2D5 /* MyCloud */ = {
 			isa = PBXGroup;
 			children = (
+				F360AD2228C23D530028E2D5 /* View */,
+				F360AD1D28C23D030028E2D5 /* Services */,
+				F360AD1A28C23CDF0028E2D5 /* Model */,
+				F360AD1728C23CB60028E2D5 /* Protocols */,
+				F360AD0B28C23ADA0028E2D5 /* Documents */,
+				F360AD0428C2396E0028E2D5 /* Constants */,
+				F360AD0128C238BB0028E2D5 /* SignUp */,
+				F360AD0028C238AD0028E2D5 /* SignIn */,
 				F360ACEA28C235790028E2D5 /* AppDelegate.swift */,
 				F360ACEC28C235790028E2D5 /* SceneDelegate.swift */,
-				F360ACEE28C235790028E2D5 /* ViewController.swift */,
 				F360ACF328C2357F0028E2D5 /* Assets.xcassets */,
 				F360ACF528C2357F0028E2D5 /* LaunchScreen.storyboard */,
 				F360ACF828C2357F0028E2D5 /* Info.plist */,
-				F360ACFE28C236C80028E2D5 /* SignInViewController.swift */,
 			);
 			path = MyCloud;
+			sourceTree = "<group>";
+		};
+		F360AD0028C238AD0028E2D5 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				F360ACFE28C236C80028E2D5 /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		F360AD0128C238BB0028E2D5 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD0228C238F00028E2D5 /* SignUpViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		F360AD0428C2396E0028E2D5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD0528C239820028E2D5 /* Images.swift */,
+				F360AD0728C239950028E2D5 /* Colors.swift */,
+				F360AD0928C239A50028E2D5 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F360AD0B28C23ADA0028E2D5 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD0E28C23B200028E2D5 /* Model */,
+				F360AD0D28C23B190028E2D5 /* View */,
+				F360AD0C28C23B080028E2D5 /* ViewModel */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		F360AD0C28C23B080028E2D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD1528C23C980028E2D5 /* DocumentsCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F360AD0D28C23B190028E2D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD0F28C23B3F0028E2D5 /* DocumentsTableViewController.swift */,
+				F360AD1128C23B810028E2D5 /* DocumentsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F360AD0E28C23B200028E2D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD1328C23BAB0028E2D5 /* DocumentModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F360AD1728C23CB60028E2D5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD1828C23CC60028E2D5 /* Protocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F360AD1A28C23CDF0028E2D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD1B28C23CF00028E2D5 /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F360AD1D28C23D030028E2D5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD1E28C23D160028E2D5 /* UserDefaultsManager.swift */,
+				F360AD2028C23D390028E2D5 /* RealmDataBaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F360AD2228C23D530028E2D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F360AD2328C23D6E0028E2D5 /* AlertOk.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +330,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F360ACFF28C236C80028E2D5 /* SignInViewController.swift in Sources */,
-				F360ACEF28C235790028E2D5 /* ViewController.swift in Sources */,
+				F360AD0828C239950028E2D5 /* Colors.swift in Sources */,
 				F360ACEB28C235790028E2D5 /* AppDelegate.swift in Sources */,
+				F360AD2128C23D390028E2D5 /* RealmDataBaseService.swift in Sources */,
+				F360AD1928C23CC60028E2D5 /* Protocols.swift in Sources */,
+				F360AD1228C23B810028E2D5 /* DocumentsTableViewCell.swift in Sources */,
+				F360AD1C28C23CF00028E2D5 /* UserModel.swift in Sources */,
+				F360AD1428C23BAB0028E2D5 /* DocumentModels.swift in Sources */,
+				F360AD0628C239820028E2D5 /* Images.swift in Sources */,
+				F360AD1628C23C980028E2D5 /* DocumentsCellViewModel.swift in Sources */,
+				F360AD2428C23D6E0028E2D5 /* AlertOk.swift in Sources */,
+				F360AD0A28C239A50028E2D5 /* Constants.swift in Sources */,
+				F360AD1F28C23D160028E2D5 /* UserDefaultsManager.swift in Sources */,
 				F360ACED28C235790028E2D5 /* SceneDelegate.swift in Sources */,
+				F360AD1028C23B3F0028E2D5 /* DocumentsTableViewController.swift in Sources */,
+				F360AD0328C238F00028E2D5 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
