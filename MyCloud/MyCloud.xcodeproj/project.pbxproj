@@ -10,9 +10,9 @@
 		F360ACEB28C235790028E2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACEA28C235790028E2D5 /* AppDelegate.swift */; };
 		F360ACED28C235790028E2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACEC28C235790028E2D5 /* SceneDelegate.swift */; };
 		F360ACEF28C235790028E2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACEE28C235790028E2D5 /* ViewController.swift */; };
-		F360ACF228C235790028E2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F360ACF028C235790028E2D5 /* Main.storyboard */; };
 		F360ACF428C2357F0028E2D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F360ACF328C2357F0028E2D5 /* Assets.xcassets */; };
 		F360ACF728C2357F0028E2D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F360ACF528C2357F0028E2D5 /* LaunchScreen.storyboard */; };
+		F360ACFF28C236C80028E2D5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360ACFE28C236C80028E2D5 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +20,10 @@
 		F360ACEA28C235790028E2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F360ACEC28C235790028E2D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F360ACEE28C235790028E2D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F360ACF128C235790028E2D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F360ACF328C2357F0028E2D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F360ACF628C2357F0028E2D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F360ACF828C2357F0028E2D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F360ACFE28C236C80028E2D5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +59,10 @@
 				F360ACEA28C235790028E2D5 /* AppDelegate.swift */,
 				F360ACEC28C235790028E2D5 /* SceneDelegate.swift */,
 				F360ACEE28C235790028E2D5 /* ViewController.swift */,
-				F360ACF028C235790028E2D5 /* Main.storyboard */,
 				F360ACF328C2357F0028E2D5 /* Assets.xcassets */,
 				F360ACF528C2357F0028E2D5 /* LaunchScreen.storyboard */,
 				F360ACF828C2357F0028E2D5 /* Info.plist */,
+				F360ACFE28C236C80028E2D5 /* SignInViewController.swift */,
 			);
 			path = MyCloud;
 			sourceTree = "<group>";
@@ -127,7 +127,6 @@
 			files = (
 				F360ACF728C2357F0028E2D5 /* LaunchScreen.storyboard in Resources */,
 				F360ACF428C2357F0028E2D5 /* Assets.xcassets in Resources */,
-				F360ACF228C235790028E2D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F360ACFF28C236C80028E2D5 /* SignInViewController.swift in Sources */,
 				F360ACEF28C235790028E2D5 /* ViewController.swift in Sources */,
 				F360ACEB28C235790028E2D5 /* AppDelegate.swift in Sources */,
 				F360ACED28C235790028E2D5 /* SceneDelegate.swift in Sources */,
@@ -147,14 +147,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F360ACF028C235790028E2D5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F360ACF128C235790028E2D5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F360ACF528C2357F0028E2D5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -293,7 +285,7 @@
 				INFOPLIST_FILE = MyCloud/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -305,7 +297,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,7 +312,7 @@
 				INFOPLIST_FILE = MyCloud/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -332,7 +324,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
