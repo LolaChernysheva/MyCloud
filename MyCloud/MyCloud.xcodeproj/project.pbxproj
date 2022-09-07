@@ -26,6 +26,7 @@
 		F360AD1F28C23D160028E2D5 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD1E28C23D160028E2D5 /* UserDefaultsManager.swift */; };
 		F360AD2128C23D390028E2D5 /* RealmDataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD2028C23D390028E2D5 /* RealmDataBaseService.swift */; };
 		F360AD2428C23D6E0028E2D5 /* AlertOk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360AD2328C23D6E0028E2D5 /* AlertOk.swift */; };
+		F384337728C36868007F87C2 /* DocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384337628C36867007F87C2 /* DocumentsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		F360AD1E28C23D160028E2D5 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		F360AD2028C23D390028E2D5 /* RealmDataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseService.swift; sourceTree = "<group>"; };
 		F360AD2328C23D6E0028E2D5 /* AlertOk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertOk.swift; sourceTree = "<group>"; };
+		F384337628C36867007F87C2 /* DocumentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 		F360AD0C28C23B080028E2D5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F384337628C36867007F87C2 /* DocumentsViewModel.swift */,
 				F360AD1528C23C980028E2D5 /* DocumentsCellViewModel.swift */,
 			);
 			path = ViewModel;
@@ -344,6 +347,7 @@
 				F360AD1F28C23D160028E2D5 /* UserDefaultsManager.swift in Sources */,
 				F360ACED28C235790028E2D5 /* SceneDelegate.swift in Sources */,
 				F360AD1028C23B3F0028E2D5 /* DocumentsTableViewController.swift in Sources */,
+				F384337728C36868007F87C2 /* DocumentsViewModel.swift in Sources */,
 				F360AD0328C238F00028E2D5 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

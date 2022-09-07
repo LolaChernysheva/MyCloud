@@ -16,7 +16,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = SignInViewController()
+        if UserDefaultsManager.shared.activeUser != nil {
+            window.rootViewController = UINavigationController(rootViewController: DocumentsTableViewController.create())
+        } else {
+            window.rootViewController = SignInViewController()
+        }
         window.makeKeyAndVisible()
         self.window = window
     }
@@ -38,5 +42,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+}
+
+extension UIViewController {
+    var window: UIWindow? {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let delegate = windowScene.delegate as? SceneDelegate, let window = delegate.window else { return nil }
+        return window
+    }
 }
 

@@ -168,9 +168,8 @@ class SignUpViewController: UIViewController {
         
             if !loginText.isEmpty && !passwordText.isEmpty {
                 UserDefaultsManager.shared.saveUser(login: loginText, password: passwordText)
-                
-                let documentsViewController = DocumentsTableViewController()
-                let nc = UINavigationController(rootViewController: documentsViewController)
+                UserDefaultsManager.shared.saveActiveUser(user: .init(login: loginText, password: passwordText))
+                let nc = UINavigationController(rootViewController: DocumentsTableViewController.create())
                 nc.modalPresentationStyle = .fullScreen
                 present(nc, animated: true, completion: nil)
             } else {
@@ -178,7 +177,6 @@ class SignUpViewController: UIViewController {
             }
         }
     }
-
 }
 
 extension SignUpViewController: UITextFieldDelegate {
@@ -188,7 +186,6 @@ extension SignUpViewController: UITextFieldDelegate {
         if Constants.disallowedChars.contains(string) {
             return false
           }
-
           return true
     }
 }

@@ -201,13 +201,9 @@ class SignInViewController: UIViewController {
                 alert.addAction(cancel)
                 present(alert, animated: true, completion: nil)
             } else if user?.login == login &&  user?.password == password {
-                let documentsViewController = DocumentsTableViewController()
-                let nc = UINavigationController(rootViewController: documentsViewController)
-                nc.modalPresentationStyle = .fullScreen
-                present(nc, animated: true, completion: nil)
-                
                 guard let activeUser = user else { return }
                 UserDefaultsManager.shared.saveActiveUser(user: activeUser)
+                presentDocumentsViewController()
             } else {
                 alertOk(title: "Ошибка", message: "Введен неверный пароль")
             }
@@ -218,6 +214,13 @@ class SignInViewController: UIViewController {
             present(signUpViewController, animated: true, completion: nil)
         }
     }
+    
+    private func presentDocumentsViewController() {
+        let documentsViewController = DocumentsTableViewController.create()
+        let nc = UINavigationController(rootViewController: documentsViewController)
+        nc.modalPresentationStyle = .fullScreen
+        present(nc, animated: true, completion: nil)
+    }
 }
 
 extension SignInViewController: UITextFieldDelegate {
@@ -227,7 +230,6 @@ extension SignInViewController: UITextFieldDelegate {
         if Constants.disallowedChars.contains(string) {
             return false
           }
-
           return true
     }
 }

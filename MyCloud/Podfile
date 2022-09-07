@@ -7,5 +7,6 @@ target 'MyCloud' do
 
   # Pods for MyCloud
 pod 'SnapKit', '~> 5.6.0'
+pod 'RealmSwift'
 
 end
