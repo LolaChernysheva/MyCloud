@@ -54,15 +54,17 @@ struct DocumentViewModel: DocumentViewModelProtocol {
     }
     
     private func filter(folders: [FolderModel], files: [FileModel]) -> [DocumentsCellViewModel] {
+        let photoExtensions = ["JPG", "PNG", "GIF", "HEIC"]
         guard let applyingFilter = applyingFilter else {
             return converFolders(folders: folders) + convertFiles(files: files)
         }
         
         switch applyingFilter {
         case .files:
-            return convertFiles(files: files)
+            let filtredFiles = files.filter({ !photoExtensions.contains($0.extention) })
+            return convertFiles(files: filtredFiles)
         case .images:
-            let filtredFiles = files.filter({ ["JPG", "PNG", "GIF", "HEIC"].contains($0.extention) })
+            let filtredFiles = files.filter({ photoExtensions.contains($0.extention) })
             return convertFiles(files: filtredFiles)
         case .folders:
             return converFolders(folders: folders)
