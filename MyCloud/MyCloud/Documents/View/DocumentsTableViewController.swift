@@ -323,7 +323,10 @@ extension DocumentsTableViewController: UIImagePickerControllerDelegate, UINavig
 extension DocumentsTableViewController {
     static func create() -> DocumentsTableViewController {
         let documentsViewController = DocumentsTableViewController()
-        documentsViewController.viewModel = DocumentViewModel(dataBaseService: RealmDataBaseService(user: UserDefaultsManager.shared.activeUser!))
+        let rootFolder = FolderModel(name: "Документы", id: "root", subfoldersIds: [], files: [])
+        let dataBase = RealmDataBaseService(user: UserDefaultsManager.shared.activeUser!, rootFolder: rootFolder)
+        documentsViewController.viewModel = DocumentViewModel(dataBaseService: dataBase,
+                                                              folderId: rootFolder.id)
         return documentsViewController
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 typealias ErrorMessage = String
 
 protocol DocumentViewModelProtocol {
-    var folderId: String? { get set}
+    var folderId: String { get set}
     var title: String { get set }
     var cells: [DocumentsCellViewModel] { get }
     var applyingFilter: FilterType? { get set }
@@ -27,21 +27,13 @@ struct DocumentViewModel: DocumentViewModelProtocol {
     
     var activeUser = UserDefaultsManager.shared.activeUser!
     let maximumAllowedFileSize: Int = 20000000
-    var folderId: String?
+    var folderId: String
     var title: String = "Документы"
     
     var cells: [DocumentsCellViewModel] {
-        var displayingFolders: [FolderModel] = []
-        var displayingFiles: [FileModel] = []
+        let displayingFolders = dataBaseService.getFolders(user: activeUser, folderId: folderId)
+        let displayingFiles = dataBaseService.getFiles(user: activeUser, folderId: folderId)
         
-        if let folderId = folderId {
-            if let folder = dataBaseService.getFolders(user: activeUser).first(where: { $0.id == folderId }) {
-                displayingFiles = folder.files
-            }
-        } else {
-            displayingFolders = dataBaseService.getFolders(user: activeUser)
-            displayingFiles = dataBaseService.getRootFolderFiles(user: activeUser)
-        }
         return filter(folders: displayingFolders, files: displayingFiles)
     }
     
@@ -49,8 +41,9 @@ struct DocumentViewModel: DocumentViewModelProtocol {
     
     let dataBaseService: DataBaseService
     
-    init(dataBaseService: DataBaseService) {
+    init(dataBaseService: DataBaseService, folderId: String) {
         self.dataBaseService = dataBaseService
+        self.folderId = folderId
     }
     
     private func filter(folders: [FolderModel], files: [FileModel]) -> [DocumentsCellViewModel] {
@@ -112,12 +105,12 @@ struct DocumentViewModel: DocumentViewModelProtocol {
     }
     
     func addFolder(name: String) {
-        let folder = FolderModel(name: name, id: UUID().uuidString, files: [])
-        _ = dataBaseService.addFolder(user: activeUser, folder: folder)
+        let folder = FolderModel(name: name, id: "\(folderId)/\(UUID().uuidString)",subfoldersIds: [], files: [])
+        _ = dataBaseService.addFolder(user: activeUser, folderId: folderId, folder: folder)
     }
     
     func delete(id: String) {
-        let folders = dataBaseService.getFolders(user: activeUser)
+        let folders = dataBaseService.getFolders(user: activeUser, folderId: folderId)
         if folders.first(where: { $0.id == id }) != nil {
             _ = dataBaseService.deleteFolder(user: activeUser, folderId: id)
         } else {
@@ -126,19 +119,15 @@ struct DocumentViewModel: DocumentViewModelProtocol {
     }
     
     func rename(id: String, value: String) {
-        let folders = dataBaseService.getFolders(user: activeUser)
-        let rootFiles = dataBaseService.getRootFolderFiles(user: activeUser)
+        let folders = dataBaseService.getFolders(user: activeUser, folderId: folderId)
+        let files = dataBaseService.getFiles(user: activeUser, folderId: folderId)
         
         if var folder = folders.first(where: { $0.id == id }) {
             folder.name = value
             _ = dataBaseService.changeFolder(user: activeUser, folder: folder)
-        } else if let folder = folders.first(where: { $0.files.contains(where: {$0.id == id})}) {
-            var file = folder.files.first(where: { $0.id == id })!
+        } else if var file = files.first(where: { $0.id == id }) {
             file.name = "\(value).\(file.extention)"
-            _ = dataBaseService.changeFile(user: activeUser, fileId: file.id, folderId: folder.id, file: file)
-        } else if var file = rootFiles.first(where: { $0.id == id }) {
-            file.name = "\(value).\(file.extention)"
-            _ = dataBaseService.changeFile(user: activeUser, fileId: file.id, folderId: nil, file: file)
+            _ = dataBaseService.changeFile(user: activeUser, fileId: file.id, folderId: folderId, file: file)
         }
     }
 }

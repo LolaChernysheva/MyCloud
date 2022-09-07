@@ -11,6 +11,7 @@
 - Create folders, add files and photos from your iPhone
 - Rename and delete previously added folders, files and photos
 - Filter the displayed items: folders, files and photos
+- Ability to add multiple levels of nesting folders
 
 The service contains validation of the size and extension of files: the maximum possible size of the uploaded file - 20Mb, there is a restriction on the download of files with the extension .txt and livePhotos (they will be converted to JPG format)
 

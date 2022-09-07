@@ -17,5 +17,6 @@ struct FileModel {
 struct FolderModel {
     var name: String
     let id: String
+    var subfoldersIds: [String]
     var files: [FileModel]
 }

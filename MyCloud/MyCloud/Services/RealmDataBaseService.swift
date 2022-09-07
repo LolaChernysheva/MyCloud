@@ -12,60 +12,54 @@ class RealmDataBaseService: DataBaseService {
     
     let realm = try! Realm()
     
-    init(user: User) {
+    init(user: User, rootFolder: FolderModel) {
         if getUserData(user: user) == nil {
             let userData = UserDataRealm()
             userData.login = user.login
+            userData.folders.append(.init(folderModel: rootFolder))
             guard saveUserData(userData: userData) != false else { fatalError("Не удалось сохранить пользователя") }
         }
     }
     
-    func getFolders(user: User) -> [FolderModel] {
-        guard let userData = getUserData(user: user) else { return [] }
-        return userData.folders.map { folderRealm in
-            folderRealm.makeFolderModel()
+    func getFolders(user: User, folderId: String) -> [FolderModel] {
+        guard let userData = getUserData(user: user),
+              let folder = userData.folders.first(where: { $0.id == folderId }) else { return [] }
+        return folder.subfoldersIds.compactMap { subfolderId in
+            userData.folders.first(where: { $0.id == subfolderId })?.makeFolderModel()
         }
     }
     
-    func getRootFolderFiles(user: User) -> [FileModel] {
-        guard let userData = getUserData(user: user) else { return [] }
-        return userData.rootFiles.map { fileRealm in
+    func getFiles(user: User, folderId: String) -> [FileModel] {
+        guard let userData = getUserData(user: user),
+              let folder = userData.folders.first(where: { $0.id == folderId })
+        else { return [] }
+        return folder.files.map { fileRealm in
             fileRealm.makeFileModel()
         }
     }
     
-    func addFile(user: User, folderId: String?, file: FileModel) -> FileModel? {
-        guard let userData = getUserData(user: user) else { return nil }
-        if let folderId = folderId {
-            if let folder = userData.folders.first(where: {$0.id == folderId }) {
-                do {
-                    realm.beginWrite()
-                    folder.files.append(.init(fileModel: file))
-                    try realm.commitWrite()
-                    return file
-                } catch {
-                    print(error.localizedDescription)
-                    return nil
-                }
-            }
-        } else {
-            do {
-                realm.beginWrite()
-                userData.rootFiles.append(.init(fileModel: file))
-                try realm.commitWrite()
-                return file
-            } catch {
-                print(error.localizedDescription)
-                return nil
-            }
-        }
-        return nil
-    }
+    func addFile(user: User, folderId: String, file: FileModel) -> FileModel? {
+        guard let userData = getUserData(user: user),
+              let folder = userData.folders.first(where: { $0.id == folderId }) else { return nil }
     
-    func addFolder(user: User, folder: FolderModel) -> FolderModel? {
-        guard let userData = getUserData(user: user) else { return nil }
         do {
             realm.beginWrite()
+            folder.files.append(.init(fileModel: file))
+            try realm.commitWrite()
+            return file
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    func addFolder(user: User, folderId: String, folder: FolderModel) -> FolderModel? {
+        guard let userData = getUserData(user: user),
+              let parentFolder = userData.folders.first(where: { $0.id == folderId }) else { return nil }
+        
+        do {
+            realm.beginWrite()
+            parentFolder.subfoldersIds.append(folder.id)
             userData.folders.append(.init(folderModel: folder))
             try realm.commitWrite()
         } catch {
@@ -75,27 +69,14 @@ class RealmDataBaseService: DataBaseService {
         return nil
     }
     
-    func deleteFile(user: User, fileId: String, folderId: String?) -> Bool {
-        guard let userData = getUserData(user: user) else { return false }
-        if let folderId = folderId {
-            if let folder = userData.folders.first(where: { $0.id == folderId }) {
-                do {
-                    if let fileIndexRealm = folder.files.firstIndex(where: { $0.id == fileId }) {
-                        realm.beginWrite()
-                        folder.files.remove(at: fileIndexRealm)
-                        try realm.commitWrite()
-                        return true
-                    }
-                } catch {
-                    print(error.localizedDescription)
-                    return false
-                }
-            }
-        }
+    func deleteFile(user: User, fileId: String, folderId: String) -> Bool {
+        guard let userData = getUserData(user: user),
+              let folder = userData.folders.first(where: { $0.id == folderId }) else { return false }
+
         do {
-            if let fileIndexRealm = userData.rootFiles.firstIndex(where: { $0.id == fileId }) {
+            if let fileIndexRealm = folder.files.firstIndex(where: { $0.id == fileId }) {
                 realm.beginWrite()
-                userData.rootFiles.remove(at: fileIndexRealm)
+                folder.files.remove(at: fileIndexRealm)
                 try realm.commitWrite()
                 return true
             }
@@ -112,6 +93,10 @@ class RealmDataBaseService: DataBaseService {
             if let folderRealmIndex = userData.folders.firstIndex(where: { $0.id == folderId }) {
                 realm.beginWrite()
                 userData.folders.remove(at: folderRealmIndex)
+                if let parentFolder = userData.folders.first(where: { $0.subfoldersIds.contains(folderId) }),
+                   let subfolderIndex = parentFolder.subfoldersIds.firstIndex(where: { $0 == folderId }) {
+                    parentFolder.subfoldersIds.remove(at: subfolderIndex)
+                }
                 try realm.commitWrite()
                 return true
             }
@@ -130,7 +115,6 @@ class RealmDataBaseService: DataBaseService {
                 
                 let newFolderRealm = FolderModelRealm(folderModel: folder)
                 folderRealm.name = newFolderRealm.name
-                folderRealm.files = newFolderRealm.files
                 
                 try realm.commitWrite()
             }
@@ -141,44 +125,25 @@ class RealmDataBaseService: DataBaseService {
         return nil
     }
     
-    func changeFile(user: User, fileId: String, folderId: String?, file: FileModel) -> FileModel? {
-        guard let userData = getUserData(user: user) else { return nil }
-        if let folderId = folderId {
-            if let folder = userData.folders.first(where: { $0.id == folderId }) {
-                do {
-                    realm.beginWrite()
-                    
-                    let fileRealm = folder.files.first(where: { $0.id == fileId })
-                    fileRealm?.name = file.name
-                    
-                    fileRealm?.fileExtension = file.extention
-                    fileRealm?.data = file.data
-                    
-                    try realm.commitWrite()
-                    return file
-                } catch {
-                    print(error.localizedDescription)
-                    return nil
-                }
-            }
-        }
+    func changeFile(user: User, fileId: String, folderId: String, file: FileModel) -> FileModel? {
+        guard let userData = getUserData(user: user),
+              let folder = userData.folders.first(where: { $0.id == folderId }) else { return nil }
+
         do {
-            if let fileRealm = userData.rootFiles.first(where: {$0.id == fileId }) {
-                realm.beginWrite()
-                
-                fileRealm.name = file.name
-                
-                fileRealm.fileExtension = file.extention
-                fileRealm.data = file.data
-                
-                try realm.commitWrite()
-                return file
-            }
+            realm.beginWrite()
+            
+            let fileRealm = folder.files.first(where: { $0.id == fileId })
+            fileRealm?.name = file.name
+            
+            fileRealm?.fileExtension = file.extention
+            fileRealm?.data = file.data
+            
+            try realm.commitWrite()
+            return file
         } catch {
             print(error.localizedDescription)
             return nil
         }
-        return nil
     }
     
     private func getUserData(user: User) -> UserDataRealm? {
@@ -200,7 +165,6 @@ class RealmDataBaseService: DataBaseService {
 
 class UserDataRealm: Object {
     @Persisted(primaryKey: true) var login: String = ""
-    @Persisted var rootFiles = List<FileModelRealm>()
     @Persisted var folders = List<FolderModelRealm>()
 }
 
@@ -229,25 +193,25 @@ class FileModelRealm: Object {
 class FolderModelRealm: Object {
     @Persisted(primaryKey: true) var id: String = ""
     @Persisted var name: String = ""
+    @Persisted var subfoldersIds = List<String>()
     @Persisted var files = List<FileModelRealm>()
     
     convenience init(folderModel: FolderModel) {
         self.init()
         self.id = folderModel.id
         self.name = folderModel.name
-        
-        let filesListRealm = List<FileModelRealm>()
-        for file in folderModel.files {
-            filesListRealm.append(FileModelRealm(fileModel: file))
+        folderModel.subfoldersIds.forEach { subfolderId in
+            self.subfoldersIds.append(subfolderId)
         }
-        self.files = filesListRealm
+        folderModel.files.forEach { fileModel in
+            self.files.append(FileModelRealm(fileModel: fileModel))
+        }
     }
     
     func makeFolderModel() -> FolderModel {
-        var filesArray = [FileModel]()
-        for file in files {
-            filesArray.append(file.makeFileModel())
-        }
-        return FolderModel(name: name, id: id, files: filesArray)
+        FolderModel(name: name,
+                    id: id,
+                    subfoldersIds: subfoldersIds.map({ $0 }),
+                    files: files.map({ $0.makeFileModel() }))
     }
 }
